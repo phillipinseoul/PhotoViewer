@@ -14,5 +14,9 @@ public class UploadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload);
     }
 
-
+    public void BackToMain (View v) {
+        Intent i = new Intent(new Intent(getApplicationContext(), MainActivity.class));
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
 }
