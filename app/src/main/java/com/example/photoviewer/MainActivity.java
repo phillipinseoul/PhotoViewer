@@ -2,6 +2,7 @@ package com.example.photoviewer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -12,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
     ImageView img;
     Button b;
     int flag = 0;
+
+    public void UploadActivity (View v) {
+        Intent i = new Intent(this, UploadActivity.class);
+        startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
