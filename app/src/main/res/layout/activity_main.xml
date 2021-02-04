@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView1"
         android:layout_width="330dp"
         android:layout_height="225dp"
         app:srcCompat="@drawable/photo_1"
