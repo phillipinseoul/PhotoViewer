@@ -11,7 +11,7 @@
         android:id="@+id/imageView1"
         android:layout_width="330dp"
         android:layout_height="225dp"
-        app:srcCompat="@drawable/photo_1"
+        app:srcCompat="@drawable/initial"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         tools:ignore="MissingConstraints" />
