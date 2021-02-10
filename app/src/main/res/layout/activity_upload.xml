@@ -7,6 +7,16 @@
     tools:context=".UploadActivity">
 
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/upload_image"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
+
     <Button
         android:id="@+id/UploadBtn"
         android:layout_width="wrap_content"
@@ -28,25 +38,5 @@
         android:layout_marginLeft="70dp"
         android:onClick="BackToMain"
         android:text="Go Back" />
-
-    <!--ImageView on which the uploaded image will be set-->
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="351dp"
-        android:layout_height="530dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        app:srcCompat="@drawable/upload_image" />
-
-    <Button
-        android:id="@+id/rotateBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="70dp"
-        android:layout_marginBottom="20dp"
-        android:onClick="rotateBtnClick"
-        android:text="Rotate" />
 
 </RelativeLayout>
