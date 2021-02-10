@@ -102,6 +102,7 @@ public class UploadActivity extends AppCompatActivity {
 
             // Retrieve image path
             Uri mImageURI = data.getData();
+            pathImage = mImageURI.getPath();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mImageURI);
 
@@ -122,44 +123,8 @@ public class UploadActivity extends AppCompatActivity {
     }
 
 
-    /*
-    private void rotateImage(String path) {
-        File file = new File(path);
-        ExifInterface exifInterface = null;
-
-        try {
-            exifInterface = new ExifInterface(file.getPath());
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
-
-        if ((orientation == ExifInterface.ORIENTATION_NORMAL) | (orientation == 0)) {
-            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_ROTATE_90);
-        } else if (orientation == ExifInterface.ORIENTATION_ROTATE_90) {
-            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_ROTATE_180);
-        } else if (orientation == ExifInterface.ORIENTATION_ROTATE_180) {
-            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_ROTATE_270);
-        } else if (orientation == ExifInterface.ORIENTATION_ROTATE_270) {
-            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_NORMAL);
-        }
-
-        try {
-            exifInterface.saveAttributes();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        mImageView.setImageBitmap(BitmapFactory.decodeFile(path));
-    }
 
 
-    public void rotateBtnClick (View view) {
-        rotateImage (pathImage);
-    }
-*/
+
 
 }
