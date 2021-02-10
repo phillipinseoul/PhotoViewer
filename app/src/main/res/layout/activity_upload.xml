@@ -11,8 +11,10 @@
         android:id="@+id/UploadBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/goBackBtn"
+        android:layout_marginBottom="70dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:onClick="BackToMain"
         android:text="Upload Photo" />
 
     <Button
@@ -21,18 +23,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="189dp"
+        android:layout_marginBottom="20dp"
         android:onClick="BackToMain"
         android:text="Go Back" />
 
     <!--ImageView on which the uploaded image will be set-->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
+        android:layout_width="351dp"
+        android:layout_height="530dp"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         app:srcCompat="@drawable/upload_image" />
 
 </RelativeLayout>

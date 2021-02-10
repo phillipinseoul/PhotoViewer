@@ -7,17 +7,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+
 public class UploadActivity extends AppCompatActivity {
 
     ImageView mImageView;
     Button mChooseBtn;
+
+    String pathImage;
 
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
@@ -86,15 +97,64 @@ public class UploadActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        String path = "";
         if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+
+            // Retrieve image path
+            Uri mImageURI = data.getData();
+            path = mImageURI.getPath();
+            pathImage = path;
+
             // Set image to image view
-            mImageView.setImageURI(data.getData());
+            mImageView.setImageBitmap(BitmapFactory.decodeFile(path));
         }
     }
+
 
     public void BackToMain (View v) {
         Intent i = new Intent(new Intent(getApplicationContext(), MainActivity.class));
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
+
+/*
+    private void rotateImage(String path) {
+        File file = new File(path);
+        ExifInterface exifInterface = null;
+
+        try {
+            exifInterface = new ExifInterface(file.getPath());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+        if ((orientation == ExifInterface.ORIENTATION_NORMAL) | (orientation == 0)) {
+            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_ROTATE_90);
+        } else if (orientation == ExifInterface.ORIENTATION_ROTATE_90) {
+            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_ROTATE_180);
+        } else if (orientation == ExifInterface.ORIENTATION_ROTATE_180) {
+            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_ROTATE_270);
+        } else if (orientation == ExifInterface.ORIENTATION_ROTATE_270) {
+            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, ""+ExifInterface.ORIENTATION_NORMAL);
+        }
+
+        try {
+            exifInterface.saveAttributes();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        mImageView.setImageBitmap(getBitmap(path));
+    }
+
+
+    public void rotateBtnClick (View view) {
+        rotateImage (pathImage);
+    }
+*/
+
 }
