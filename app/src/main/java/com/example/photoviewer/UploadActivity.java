@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -20,10 +21,13 @@ import android.view.View;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UploadActivity extends AppCompatActivity {
 
@@ -41,6 +45,13 @@ public class UploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        // Gradient Animation
+        RelativeLayout relativeLayout = findViewById(R.id.root_layout);
+        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+
         // VIEWS
         mImageView = findViewById(R.id.imageView);
         mChooseBtn = findViewById(R.id.UploadBtn);
@@ -55,6 +66,10 @@ public class UploadActivity extends AppCompatActivity {
 
                 rotateAnimation.setDuration(1000);
                 mImageView.startAnimation(rotateAnimation);
+
+
+                // Change background color
+
             }
         });
 
