@@ -24,6 +24,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="70dp"
         android:onClick="BackToMain"
         android:text="Go Back" />
 
@@ -35,5 +37,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         app:srcCompat="@drawable/upload_image" />
+
+    <Button
+        android:id="@+id/rotateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="rotateBtnClick"
+        android:text="Rotate" />
 
 </RelativeLayout>

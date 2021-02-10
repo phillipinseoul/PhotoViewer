@@ -14,6 +14,7 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -92,7 +93,6 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-
     // Handle the result of picked image
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -102,11 +102,15 @@ public class UploadActivity extends AppCompatActivity {
 
             // Retrieve image path
             Uri mImageURI = data.getData();
-            path = mImageURI.getPath();
-            pathImage = path;
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), mImageURI);
 
-            // Set image to image view
-            mImageView.setImageBitmap(BitmapFactory.decodeFile(path));
+                // Set image to image view
+                // mImageView.setImageBitmap(BitmapFactory.decodeFile(path));
+                mImageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -117,7 +121,8 @@ public class UploadActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-/*
+
+    /*
     private void rotateImage(String path) {
         File file = new File(path);
         ExifInterface exifInterface = null;
@@ -148,7 +153,7 @@ public class UploadActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mImageView.setImageBitmap(getBitmap(path));
+        mImageView.setImageBitmap(BitmapFactory.decodeFile(path));
     }
 
 
